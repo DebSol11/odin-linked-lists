@@ -21,9 +21,16 @@ class LinkedList {
     }
     let currentNode = this.head;
     while (currentNode.nextNode) {
-      currentNode = currentNode.nextNode; // move to the last node
+      currentNode = currentNode.nextNode;
+      // move to the last node
     }
-    currentNode.nextNode = newNode; // Link the last node to the new node
+    currentNode.nextNode = newNode;
+    // Link the last node to the new node
+  }
+
+  prepend(value) {
+    let newNode = new Node(value);
+    this.head = newNode;
   }
 
   // Method to print the list
@@ -32,9 +39,11 @@ class LinkedList {
     let result = "";
     while (currentNode) {
       result += currentNode.value + " -> ";
-      currentNode = currentNode.nextNode; // Move to the next node
+      currentNode = currentNode.nextNode; 
+      // Move to the next node
     }
-    console.log("head = " + result + "null"); // End of the list
+    console.log("head = " + result + "null"); 
+    // End of the list
   }
 }
 
@@ -46,6 +55,8 @@ newLinkedList.printList();
 newLinkedList.append(30);
 newLinkedList.printList();
 newLinkedList.append(40);
+newLinkedList.printList();
+newLinkedList.prepend(5);
 newLinkedList.printList();
 
 /* 
