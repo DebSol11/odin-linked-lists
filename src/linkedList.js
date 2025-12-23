@@ -35,3 +35,5 @@ class LinkedList {
     console.log(result + "null"); // End of the list
   }
 }
+
+
