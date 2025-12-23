@@ -11,8 +11,16 @@ class LinkedList {
     }
     // Method to append a new node to the list
     append(value) {
-        
+        const newNode = new Node(value);
+        // The following line checks if this.head is falsy. This includes checking if (this.head === "false" || this.head === "0" || this.head === "" || this.head === "null" || this.head === "undefined" || this.head === "NaN") or short (!this.head)
+        if (!this.head) {
+            this.head = newNode; // If the list is empty, set head to new node 
+            return;
+        }
+        let current = this.head;
+        while (current.newNode) {
+            current = current.nextNode; // move to the last node 
+        }
+        current.nextNode = newNode; // Link the last node to the new node 
     }
-//   get something() {} // getter method
-//   set something(oneParameter) {} // setter method
 }
