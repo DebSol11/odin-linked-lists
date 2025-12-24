@@ -35,7 +35,7 @@ class LinkedList {
     this.head = newNode
   }
 
-  size() {
+  calculateSize() {
     let currentNode = this.head;
     let sizeCounter = 0;
     while (currentNode) {
@@ -44,6 +44,10 @@ class LinkedList {
       // Move to the next node
     }
     return sizeCounter
+  }
+
+  returnHead() {
+    return this.head.value;
   }
 
   // Method to print the list
@@ -58,6 +62,12 @@ class LinkedList {
     console.log("head = " + result + "null"); 
     // End of the list
   }
+
+  printSize() {
+    const printMessage = "The total number of nodes in the list is: ";
+    console.log(newLinkedList.calculateSize());
+    return console.log(printMessage + newLinkedList.calculateSize());
+  }
 }
 
 let newLinkedList = new LinkedList();
@@ -69,7 +79,11 @@ newLinkedList.append(20);
 newLinkedList.printList();
 newLinkedList.append(30);
 newLinkedList.printList();
-console.log(newLinkedList.size())
+console.log(newLinkedList.printSize());
+
+console.log("The value of the first node in the list is: " + newLinkedList.returnHead())
+
+
 
 
 
