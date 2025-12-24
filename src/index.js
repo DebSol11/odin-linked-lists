@@ -50,7 +50,8 @@ class LinkedList {
     return this.head.value;
   }
 
-  // Method to print the list
+  // METHODS TO PRINT
+  // The list
   printList() {
     let currentNode = this.head;
     let result = "";
@@ -63,10 +64,16 @@ class LinkedList {
     // End of the list
   }
 
+  // The size of the list
   printSize() {
     const printMessage = "The total number of nodes in the list is: ";
-    console.log(newLinkedList.calculateSize());
     return console.log(printMessage + newLinkedList.calculateSize());
+  }
+
+  // The first node aka. head of the list
+  printHead() {
+    const printMessage = "The value of the first node in the list is: ";
+    return console.log(printMessage + newLinkedList.returnHead());
   }
 }
 
@@ -79,10 +86,8 @@ newLinkedList.append(20);
 newLinkedList.printList();
 newLinkedList.append(30);
 newLinkedList.printList();
-console.log(newLinkedList.printSize());
-
-console.log("The value of the first node in the list is: " + newLinkedList.returnHead())
-
+newLinkedList.printSize();
+newLinkedList.printHead();
 
 
 
