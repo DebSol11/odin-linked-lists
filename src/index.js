@@ -32,7 +32,7 @@ class LinkedList {
   prepend(value) {
     let newNode = new Node(value);
     newNode.nextNode = this.head;
-    this.head = newNode
+    this.head = newNode;
   }
 
   calculateSize() {
@@ -43,7 +43,7 @@ class LinkedList {
       sizeCounter++;
       // Move to the next node
     }
-    return sizeCounter
+    return sizeCounter;
   }
 
   returnHead() {
@@ -53,13 +53,24 @@ class LinkedList {
   returnTail() {
     let currentNode = this.head;
     while (currentNode.nextNode) {
-    currentNode = currentNode.nextNode;
+      currentNode = currentNode.nextNode;
       // move to the last node
+    }
+    return currentNode.value;
   }
-  return currentNode.value
-}
 
-  // METHODS TO PRINT
+  returnValueAt(index){
+    let currentNode = this.head;
+    let nodeCounter = 0;
+    while (currentNode && noteCounter < index ) {
+      currentNode = currentNode.nextNode;
+      nodeCounter++;
+      // Move to the next node
+    }
+    return currentNode.value;
+  }
+
+  // METHODS THAT PRINT
   // The list
   printList() {
     let currentNode = this.head;
@@ -69,7 +80,7 @@ class LinkedList {
       currentNode = currentNode.nextNode;
       // Move to the next node
     }
-    console.log("head = " + result + "null"); 
+    console.log("head = " + result + "null");
     // End of the list
   }
 
@@ -103,8 +114,6 @@ newLinkedList.printList();
 newLinkedList.printSize();
 newLinkedList.printHead();
 newLinkedList.printTail();
-
-
 
 /* 
 Node class: Each node holds a value and a reference (next) to the next node.
