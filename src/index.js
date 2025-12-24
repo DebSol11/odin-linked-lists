@@ -71,22 +71,43 @@ class LinkedList {
   // }
 
   // vor rangekommen ^ n
-  
-  returnValueAt(head, index) {
-    // Base case: if the list is empty or index is out of
-    // bounds
-    if (head === null) {
-      return -1;
+
+  // returnValueAt(head, index) {
+  //   // Base case: if the list is empty or index is out of
+  //   // bounds
+  //   if (head === null) {
+  //     return -1;
+  //   }
+
+  //   // Base case: if count equals n, return node's data
+  //   if (index === 1) {
+  //     return head.value;
+  //   }
+
+  //   // Recursive case: move to the next node and decrease
+  //   // index
+  //   return GetNth(head.nextNode, index - 1);
+  // }
+
+  // Given the head of a list and an index, return the data at
+  // the index
+  getNth(index) {
+    let current = this.head;
+    let count = 1;
+
+    // Traverse the linked list
+    while (current !== null) {
+      if (count === index) {
+        // Return data at the current
+        // node if index matches
+        return current.value;
+      }
+      count++;
+      current = current.nextNode;
     }
 
-    // Base case: if count equals n, return node's data
-    if (index === 1) {
-      return head.value;
-    }
-
-    // Recursive case: move to the next node and decrease
-    // index
-    return GetNth(head.nextNode, index - 1);
+    // Return -1 if index is out of bounds
+    return -1;
   }
 
   // METHODS THAT PRINT
@@ -134,8 +155,14 @@ newLinkedList.printSize();
 newLinkedList.printHead();
 newLinkedList.printTail();
 // console.log(newLinkedList.returnValueAt(4));
-console.log("Element at index 3 is: ", newLinkedList.returnValueAt(
-  head, 3));
+let index = 3;
+let result = newLinkedList.getNth(index);
+if (result !== -1) {
+    console.log(`Element at index ${index} is ${result}`);
+}
+else {
+    console.log(`Index ${index} is out of bounds`);
+}
 /* 
 Node class: Each node holds a value and a reference (next) to the next node.
 
