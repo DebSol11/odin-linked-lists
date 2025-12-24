@@ -59,15 +59,34 @@ class LinkedList {
     return currentNode.value;
   }
 
-  returnValueAt(index){
-    let currentNode = this.head;
-    let nodeCounter = 0;
-    while (currentNode && noteCounter < index ) {
-      currentNode = currentNode.nextNode;
-      nodeCounter++;
-      // Move to the next node
+  // returnValueAt(index) {
+  //   let currentNode = this.head;
+  //   let nodeCounter = 0;
+  //   while (currentNode && nodeCounter < index) {
+  //     currentNode = currentNode.nextNode;
+  //     nodeCounter++;
+  //     // Move to the next node
+  //   }
+  //   return currentNode.value;
+  // }
+
+  // vor rangekommen ^ n
+  
+  returnValueAt(head, index) {
+    // Base case: if the list is empty or index is out of
+    // bounds
+    if (head === null) {
+      return -1;
     }
-    return currentNode.value;
+
+    // Base case: if count equals n, return node's data
+    if (index === 1) {
+      return head.value;
+    }
+
+    // Recursive case: move to the next node and decrease
+    // index
+    return GetNth(head.nextNode, index - 1);
   }
 
   // METHODS THAT PRINT
@@ -114,7 +133,9 @@ newLinkedList.printList();
 newLinkedList.printSize();
 newLinkedList.printHead();
 newLinkedList.printTail();
-
+// console.log(newLinkedList.returnValueAt(4));
+console.log("Element at index 3 is: ", newLinkedList.returnValueAt(
+  head, 3));
 /* 
 Node class: Each node holds a value and a reference (next) to the next node.
 
