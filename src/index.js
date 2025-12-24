@@ -28,9 +28,22 @@ class LinkedList {
     // Link the last node to the new node
   }
 
+  // Method to prepend a new node to the list
   prepend(value) {
     let newNode = new Node(value);
-    this.head = newNode;
+    newNode.nextNode = this.head;
+    this.head = newNode
+  }
+
+  size() {
+    let currentNode = this.head;
+    let sizeCounter = 0;
+    while (currentNode) {
+      currentNode = currentNode.nextNode;
+      sizeCounter++;
+      // Move to the next node
+    }
+    return sizeCounter
   }
 
   // Method to print the list
@@ -39,7 +52,7 @@ class LinkedList {
     let result = "";
     while (currentNode) {
       result += currentNode.value + " -> ";
-      currentNode = currentNode.nextNode; 
+      currentNode = currentNode.nextNode;
       // Move to the next node
     }
     console.log("head = " + result + "null"); 
@@ -50,14 +63,15 @@ class LinkedList {
 let newLinkedList = new LinkedList();
 newLinkedList.append(10);
 newLinkedList.printList();
+newLinkedList.prepend(5);
+newLinkedList.printList();
 newLinkedList.append(20);
 newLinkedList.printList();
 newLinkedList.append(30);
 newLinkedList.printList();
-newLinkedList.append(40);
-newLinkedList.printList();
-newLinkedList.prepend(5);
-newLinkedList.printList();
+console.log(newLinkedList.size())
+
+
 
 /* 
 Node class: Each node holds a value and a reference (next) to the next node.
