@@ -50,6 +50,15 @@ class LinkedList {
     return this.head.value;
   }
 
+  returnTail() {
+    let currentNode = this.head;
+    while (currentNode.nextNode) {
+    currentNode = currentNode.nextNode;
+      // move to the last node
+  }
+  return currentNode.value
+}
+
   // METHODS TO PRINT
   // The list
   printList() {
@@ -75,6 +84,11 @@ class LinkedList {
     const printMessage = "The value of the first node in the list is: ";
     return console.log(printMessage + newLinkedList.returnHead());
   }
+
+  printTail() {
+    const printMessage = "The value of the final node in the list is: ";
+    return console.log(printMessage + newLinkedList.returnTail());
+  }
 }
 
 let newLinkedList = new LinkedList();
@@ -88,7 +102,7 @@ newLinkedList.append(30);
 newLinkedList.printList();
 newLinkedList.printSize();
 newLinkedList.printHead();
-
+newLinkedList.printTail();
 
 
 
