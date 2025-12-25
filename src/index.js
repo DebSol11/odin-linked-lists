@@ -87,6 +87,17 @@ class LinkedList {
     }
   }
 
+  contains(value) {
+    let currentNode = this.head;
+    while (currentNode.nextNode) {
+      if (currentNode.value === value) {
+        return true;
+      }
+      currentNode = currentNode.nextNode;
+    }
+    return false;
+  }
+
   // METHODS THAT PRINT
   // The list
   printList() {
@@ -130,11 +141,24 @@ class LinkedList {
   printPopped() {
     let valuePop = newLinkedList.pop();
     if (!valuePop) {
-      console.log("There is no value to pop of the list, the list is likely empty.");
+      console.log(
+        "There is no value to pop of the list, the list is likely empty."
+      );
     } else {
-      console.log(`The head with value ${valuePop} has been popped of the list`)
+      console.log(
+        `The head with value ${valuePop} has been popped of the list`
+      );
     }
   }
+
+  printContains(value) {
+    if (newLinkedList.contains(value) === true) {
+      console.log(`Value ${value} is in the list`);
+    } else {
+      console.log(`Value ${value} is NOT in the list`);
+    }
+  }
+
 }
 
 let newLinkedList = new LinkedList();
@@ -150,9 +174,10 @@ newLinkedList.printSize();
 newLinkedList.printHead();
 newLinkedList.printTail();
 newLinkedList.printValueAt(2);
-// console.log(newLinkedList.pop());
 newLinkedList.printPopped();
 newLinkedList.printList();
+newLinkedList.printContains(5);
+
 /* 
 Node class: Each node holds a value and a reference (next) to the next node.
 
