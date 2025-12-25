@@ -59,39 +59,7 @@ class LinkedList {
     return currentNode.value;
   }
 
-  // returnValueAt(index) {
-  //   let currentNode = this.head;
-  //   let nodeCounter = 0;
-  //   while (currentNode && nodeCounter < index) {
-  //     currentNode = currentNode.nextNode;
-  //     nodeCounter++;
-  //     // Move to the next node
-  //   }
-  //   return currentNode.value;
-  // }
-
-  // vor rangekommen ^ n
-
-  // returnValueAt(head, index) {
-  //   // Base case: if the list is empty or index is out of
-  //   // bounds
-  //   if (head === null) {
-  //     return -1;
-  //   }
-
-  //   // Base case: if count equals n, return node's data
-  //   if (index === 1) {
-  //     return head.value;
-  //   }
-
-  //   // Recursive case: move to the next node and decrease
-  //   // index
-  //   return GetNth(head.nextNode, index - 1);
-  // }
-
-  // Given the head of a list and an index, return the data at
-  // the index
-  getNth(index) {
+  getValueAt(index) {
     let current = this.head;
     let count = 1;
 
@@ -105,7 +73,6 @@ class LinkedList {
       count++;
       current = current.nextNode;
     }
-
     // Return -1 if index is out of bounds
     return -1;
   }
@@ -140,6 +107,15 @@ class LinkedList {
     const printMessage = "The value of the final node in the list is: ";
     return console.log(printMessage + newLinkedList.returnTail());
   }
+
+  printValueAt(index) {
+    let result = newLinkedList.getValueAt(index);
+    if (result !== -1) {
+      console.log(`Element at index ${index} has a value of ${result}`);
+    } else {
+      console.log(`Index ${index} is out of bounds`);
+    }
+  }
 }
 
 let newLinkedList = new LinkedList();
@@ -154,15 +130,9 @@ newLinkedList.printList();
 newLinkedList.printSize();
 newLinkedList.printHead();
 newLinkedList.printTail();
+newLinkedList.printValueAt(2)
 // console.log(newLinkedList.returnValueAt(4));
-let index = 3;
-let result = newLinkedList.getNth(index);
-if (result !== -1) {
-    console.log(`Element at index ${index} is ${result}`);
-}
-else {
-    console.log(`Index ${index} is out of bounds`);
-}
+
 /* 
 Node class: Each node holds a value and a reference (next) to the next node.
 
