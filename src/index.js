@@ -77,6 +77,16 @@ class LinkedList {
     return -1;
   }
 
+  pop() {
+    if (!this.head) {
+      return undefined;
+    } else {
+      let headNode = this.head;
+      this.head = headNode.nextNode;
+      return headNode.value;
+    }
+  }
+
   // METHODS THAT PRINT
   // The list
   printList() {
@@ -116,6 +126,15 @@ class LinkedList {
       console.log(`Index ${index} is out of bounds`);
     }
   }
+
+  printPopped() {
+    let valuePop = newLinkedList.pop();
+    if (!valuePop) {
+      console.log("There is no value to pop of the list, the list is likely empty.");
+    } else {
+      console.log(`The head with value ${valuePop} has been popped of the list`)
+    }
+  }
 }
 
 let newLinkedList = new LinkedList();
@@ -130,9 +149,10 @@ newLinkedList.printList();
 newLinkedList.printSize();
 newLinkedList.printHead();
 newLinkedList.printTail();
-newLinkedList.printValueAt(2)
-// console.log(newLinkedList.returnValueAt(4));
-
+newLinkedList.printValueAt(2);
+// console.log(newLinkedList.pop());
+newLinkedList.printPopped();
+newLinkedList.printList();
 /* 
 Node class: Each node holds a value and a reference (next) to the next node.
 
