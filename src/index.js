@@ -113,13 +113,15 @@ class LinkedList {
     }
   }
 
+  toString() {}
+
   // METHODS THAT PRINT
   // The list
   printList() {
     let currentNode = this.head;
     let result = "";
     while (currentNode) {
-      result += currentNode.value + " -> ";
+      result += "( " + currentNode.value + " )" + " -> ";
       currentNode = currentNode.nextNode;
       // Move to the next node
     }
@@ -177,12 +179,13 @@ class LinkedList {
   printIndexAt(value) {
     let index = newLinkedList.getIndexAt(value);
     if (index !== -1) {
-      console.log(`The first element with the value ${value} has an index of ${index}`);
+      console.log(
+        `The first element with the value ${value} has an index of ${index}`
+      );
     } else {
       console.log(`The element with the ${value} was not found in the list`);
     }
   }
-
 }
 
 let newLinkedList = new LinkedList();
