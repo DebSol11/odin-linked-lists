@@ -113,7 +113,31 @@ class LinkedList {
     }
   }
 
-  toString() {}
+  // using the rest parameter syntax "...values"
+  insertAt(index, ...value) {
+    if (index <= 0) {
+      throw new Error("Index out of bounds");
+    }
+
+    for (let value of values) {
+      const newNode = new Node(value);
+      if (index === 1) {
+        newNode.nextNode = this.head;
+        this.head = newNode;
+      } else {
+        let currentNode = this.head;
+        for (let i = 0; i < index; i++) {
+          if (currentNode === null) {
+            throw new Error("Index out of bounds");
+          }
+          currentNode = currentNode.nextNode;
+        }
+        newNode.nextNode = currentNode.nextNode;
+        currentNode.nextNode = newNode
+      }
+      index++
+    }
+  }
 
   // METHODS THAT PRINT
   // The list
@@ -200,11 +224,13 @@ newLinkedList.printList();
 newLinkedList.printSize();
 newLinkedList.printHead();
 newLinkedList.printTail();
-newLinkedList.printValueAt(2);
+newLinkedList.printValueAt(1);
 newLinkedList.printPopped();
 newLinkedList.printList();
 newLinkedList.printContains(5);
 newLinkedList.printIndexAt(30);
+newLinkedList.insertAt(1, 11, 33);
+newLinkedList.printList();
 
 /* 
 Node class: Each node holds a value and a reference (next) to the next node.
