@@ -93,26 +93,24 @@ class LinkedList {
       if (currentNode.value === value) {
         return true;
       } else if (currentNode.nextNode === null) {
-        return 
+        return false;
       }
       currentNode = currentNode.nextNode;
     }
-    return false;
   }
 
-  findIndex(value) {
+  getIndexAt(value) {
     let currentNode = this.head;
     let count = 1;
-    while (currentNode.nextNode) {
+    while (currentNode.nextNode || currentNode.nextNode === null) {
       if (currentNode.value === value) {
-        console.log(`${count}`);
         return count;
+      } else if (currentNode.nextNode === null) {
+        return -1;
       }
       count++;
       currentNode = currentNode.nextNode;
     }
-    console.log("Didn't find the value");
-    return -1;
   }
 
   // METHODS THAT PRINT
@@ -175,6 +173,16 @@ class LinkedList {
       console.log(`Value ${value} is NOT in the list`);
     }
   }
+
+  printIndexAt(value) {
+    let index = newLinkedList.getIndexAt(value);
+    if (index !== -1) {
+      console.log(`The first element with the value ${value} has an index of ${index}`);
+    } else {
+      console.log(`The element with the ${value} was not found in the list`);
+    }
+  }
+
 }
 
 let newLinkedList = new LinkedList();
@@ -192,7 +200,8 @@ newLinkedList.printTail();
 newLinkedList.printValueAt(2);
 newLinkedList.printPopped();
 newLinkedList.printList();
-newLinkedList.printContains(30);
+newLinkedList.printContains(5);
+newLinkedList.printIndexAt(30);
 
 /* 
 Node class: Each node holds a value and a reference (next) to the next node.
