@@ -115,9 +115,7 @@ class LinkedList {
 
   // using the rest parameter syntax "...values"
   insertAt(index, linkedListObject, ...values) {
-    if (index <= 0 || index > (linkedListObject.calculateSize() + 1)) {
-      throw new Error("Index out of bounds");
-    }
+    linkedListObject.checkIfIndexOutOfBounds(index, linkedListObject);
 
     for (let value of values) {
       const newNode = new Node(value);
@@ -126,16 +124,43 @@ class LinkedList {
         this.head = newNode;
       } else {
         let currentNode = this.head;
-        for (let i = 0; i < index -2; i++) {
+        for (let i = 0; i < index - 2; i++) {
           if (currentNode === null) {
             throw new Error("Index out of bounds");
           }
           currentNode = currentNode.nextNode;
         }
         newNode.nextNode = currentNode.nextNode;
-        currentNode.nextNode = newNode
+        currentNode.nextNode = newNode;
       }
-      index++
+      index++;
+    }
+  }
+
+  removeAt(index, linkedListObject) {
+    linkedListObject.checkIfIndexOutOfBounds(index, linkedListObject);
+
+    let current = this.head;
+    let previous;
+
+    // remove head
+    if (index === 1) {
+      this.head = current.nextNode;
+    } else {
+      // step over the node at the specific index
+      let count = 1;
+      while (count < index) {
+        previous = current; // Node before the target
+        current = current.nextNode; // Target node to be removed
+        count++;
+      }
+      previous.nextNode = current.nextNode;
+    }
+  }
+
+  checkIfIndexOutOfBounds(index, linkedListObject) {
+    if (index <= 0 || index > linkedListObject.calculateSize() + 1) {
+      throw new Error("Index out of bounds");
     }
   }
 
@@ -230,6 +255,8 @@ newLinkedList.printList();
 newLinkedList.printContains(5);
 newLinkedList.printIndexAt(30);
 newLinkedList.insertAt(2, newLinkedList, 11, 33);
+newLinkedList.printList();
+newLinkedList.removeAt(1, newLinkedList);
 newLinkedList.printList();
 
 /* 
