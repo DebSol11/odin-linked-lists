@@ -259,7 +259,14 @@ list.printList();
 list.removeAt(2, list);
 list.printList();
 
-
+const animalList = new LinkedList();
+animalList.append("dog");
+animalList.append("cat");
+animalList.append("parrot");
+animalList.append("hamster");
+animalList.append("snake");
+animalList.append("turtle");
+animalList.printList();
 
 /* 
 Node class: Each node holds a value and a reference (next) to the next node.
