@@ -179,24 +179,24 @@ class LinkedList {
   }
 
   // The size of the list
-  printSize() {
+  printSize(linkedListObject) {
     const printMessage = "The total number of nodes in the list is: ";
-    return console.log(printMessage + newLinkedList.calculateSize());
+    return console.log(printMessage + linkedListObject.calculateSize());
   }
 
   // The first node aka. head of the list
-  printHead() {
+  printHead(linkedListObject) {
     const printMessage = "The value of the first node in the list is: ";
-    return console.log(printMessage + newLinkedList.returnHead());
+    return console.log(printMessage + linkedListObject.returnHead());
   }
 
-  printTail() {
+  printTail(linkedListObject) {
     const printMessage = "The value of the final node in the list is: ";
-    return console.log(printMessage + newLinkedList.returnTail());
+    return console.log(printMessage + linkedListObject.returnTail());
   }
 
-  printValueAt(index) {
-    let result = newLinkedList.getValueAt(index);
+  printValueAt(index, linkedListObject) {
+    let result = linkedListObject.getValueAt(index);
     if (result !== -1) {
       console.log(`Element at index ${index} has a value of ${result}`);
     } else {
@@ -204,8 +204,8 @@ class LinkedList {
     }
   }
 
-  printPopped() {
-    let valuePop = newLinkedList.pop();
+  printPopped(linkedListObject) {
+    let valuePop = linkedListObject.pop();
     if (!valuePop) {
       console.log(
         "There is no value to pop of the list, the list is likely empty."
@@ -217,16 +217,16 @@ class LinkedList {
     }
   }
 
-  printContains(value) {
-    if (newLinkedList.contains(value) === true) {
+  printContains(value, linkedListObject) {
+    if (linkedListObject.contains(value) === true) {
       console.log(`Value ${value} is in the list`);
     } else {
       console.log(`Value ${value} is NOT in the list`);
     }
   }
 
-  printIndexAt(value) {
-    let index = newLinkedList.getIndexAt(value);
+  printIndexAt(value, linkedListObject) {
+    let index = linkedListObject.getIndexAt(value);
     if (index !== -1) {
       console.log(
         `The first element with the value ${value} has an index of ${index}`
@@ -237,27 +237,29 @@ class LinkedList {
   }
 }
 
-let newLinkedList = new LinkedList();
-newLinkedList.append(10);
-newLinkedList.printList();
-newLinkedList.prepend(5);
-newLinkedList.printList();
-newLinkedList.append(20);
-newLinkedList.printList();
-newLinkedList.append(30);
-newLinkedList.printList();
-newLinkedList.printSize();
-newLinkedList.printHead();
-newLinkedList.printTail();
-newLinkedList.printValueAt(1);
-newLinkedList.printPopped();
-newLinkedList.printList();
-newLinkedList.printContains(5);
-newLinkedList.printIndexAt(30);
-newLinkedList.insertAt(2, newLinkedList, 11, 33);
-newLinkedList.printList();
-newLinkedList.removeAt(1, newLinkedList);
-newLinkedList.printList();
+const list = new LinkedList();
+list.append(10);
+list.printList();
+list.prepend(5);
+list.printList();
+list.append(20);
+list.printList();
+list.append(30);
+list.printList();
+list.printSize(list);
+list.printHead(list);
+list.printTail(list);
+list.printValueAt(1, list);
+list.printPopped(list);
+list.printList();
+list.printContains(5, list);
+list.printIndexAt(30, list);
+list.insertAt(2, list, 11, 33);
+list.printList();
+list.removeAt(2, list);
+list.printList();
+
+
 
 /* 
 Node class: Each node holds a value and a reference (next) to the next node.
