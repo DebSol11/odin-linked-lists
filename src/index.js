@@ -114,8 +114,8 @@ class LinkedList {
   }
 
   // using the rest parameter syntax "...values"
-  insertAt(index, ...value) {
-    if (index <= 0) {
+  insertAt(index, linkedListObject, ...values) {
+    if (index <= 0 || index > (linkedListObject.calculateSize() + 1)) {
       throw new Error("Index out of bounds");
     }
 
@@ -126,7 +126,7 @@ class LinkedList {
         this.head = newNode;
       } else {
         let currentNode = this.head;
-        for (let i = 0; i < index; i++) {
+        for (let i = 0; i < index -2; i++) {
           if (currentNode === null) {
             throw new Error("Index out of bounds");
           }
@@ -229,7 +229,7 @@ newLinkedList.printPopped();
 newLinkedList.printList();
 newLinkedList.printContains(5);
 newLinkedList.printIndexAt(30);
-newLinkedList.insertAt(1, 11, 33);
+newLinkedList.insertAt(2, newLinkedList, 11, 33);
 newLinkedList.printList();
 
 /* 
